@@ -741,11 +741,9 @@ class AsynPool(_pool.Pool):
                     fileno_to_inq.pop(fd, None)
                     active_writes.discard(fd)
                     all_inqueues.discard(fd)
-                    hub_remove(fd)
             except KeyError:
                 pass
         self.on_inqueue_close = on_inqueue_close
-
         self.hub_remove = hub_remove
 
         def schedule_writes(ready_fds, total_write_count=[0]):
